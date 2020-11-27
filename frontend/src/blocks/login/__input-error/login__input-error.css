@@ -1,0 +1,9 @@
+.login__input-error {
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  opacity: 1;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+}

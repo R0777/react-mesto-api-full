@@ -1,0 +1,11 @@
+.header__login-email {
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .header__login-email {
+    max-width: 103px;
+  }
+}

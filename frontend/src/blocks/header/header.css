@@ -1,0 +1,29 @@
+@import url(./__logo/header__logo.css);
+@import url(./__login-email/header__login-email.css);
+@import url(./__login-text/header__login-text.css);
+
+
+
+.header {
+  max-width: 882px;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 45px 0 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 400px) {
+.header {
+  padding: 28px 30px 27px;
+  font-size: 14px;
+  line-height: 17px;
+}
+}

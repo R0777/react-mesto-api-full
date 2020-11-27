@@ -1,0 +1,25 @@
+@import url(./__block/popup-big__block.css);
+@import url(./__close/popup-big__close.css);
+@import url(./__pic/popup-big__pic.css);
+@import url(./__place/popup-big__place.css);
+@import url(./__text/popup-big__text.css);
+
+.popup-big {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-big-open {
+  visibility: visible;
+  opacity: 1;
+}

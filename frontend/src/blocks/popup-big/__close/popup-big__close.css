@@ -1,0 +1,30 @@
+.popup-big__close {
+  position: absolute;
+  background: url(../../../images/svg/close.svg) no-repeat;
+  background-position: center;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+  width: 55px;
+  height: 55px;
+  top: -50px;
+  right: -50px;
+  outline: none;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.popup-big__close:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .3s ease-in-out;
+}
+
+@media screen and (max-width: 400px) {
+  .popup-big__close {
+    width: 45px;
+    height: 45px;
+    top: -40px;
+    right: -40px;
+  }
+}

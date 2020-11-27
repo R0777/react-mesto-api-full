@@ -1,0 +1,12 @@
+.login__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+@media screen and (max-width: 400px) {
+  .login__field {
+    margin: 30px 0;
+  }
+}

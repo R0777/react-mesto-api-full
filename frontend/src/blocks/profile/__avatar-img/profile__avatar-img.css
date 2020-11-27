@@ -1,0 +1,10 @@
+.profile__avatar-img {
+  width: 120px;
+  height: 120px;
+}
+
+.profile__avatar-img:hover {
+  opacity: .2;
+  transition: opacity .4s ease-in-out;
+  cursor: pointer;
+}

@@ -1,0 +1,21 @@
+
+.popup__tooltip {
+  width: 120px;
+  height: 120px;
+  line-height: 29px;
+  margin: 30px auto 32px;
+}
+
+@media screen and (max-width: 400px) {
+  .popup__tooltip {
+    margin: 50px auto;
+  }
+}
+
+.accept {
+  background: url(../../../images/svg/accept.svg);
+}
+
+.decline {
+  background: url(../../../images/svg/decline.svg);
+}

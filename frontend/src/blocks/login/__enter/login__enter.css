@@ -1,0 +1,25 @@
+.login__enter {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  background: #fff;
+  border-radius: 2px;
+  border: 2px solid #000;
+  width: 100%;
+  box-shadow: none;
+  outline: none;
+  text-align: center;
+  color: #000;
+  box-sizing: border-box;
+  margin-top: 216px;
+  padding: 14px 0 14px 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .login__enter {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 173px;
+  }
+}

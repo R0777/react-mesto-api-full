@@ -1,0 +1,24 @@
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile__avatar::after {
+  content: url(../../../images/svg/pen-b.svg);
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  top: 40%;
+  left: 40%;
+  opacity: 0;
+}
+
+.profile__avatar:hover::after {
+  opacity: 1;
+  transition: opacity .4s ease-in-out;
+  cursor: pointer;
+}

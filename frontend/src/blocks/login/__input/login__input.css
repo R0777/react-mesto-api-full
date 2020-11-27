@@ -1,0 +1,21 @@
+.login__input {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  background: black;
+  color: #ccc;
+  width: 100%;
+  border: none;
+  padding-bottom: 13px;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 400px) {
+
+  .login__input {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
