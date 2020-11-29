@@ -1,3 +1,5 @@
+import { getToken } from './token';
+
 class Api {
   
   constructor({
@@ -90,10 +92,10 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-14',
+  url: 'https://r0777.students.nomoredomains.work/api',
   headers: {
-    authorization: '2078e82d-f04d-4fd6-8014-7e1fe1782828',
     'Content-Type': 'application/json',
+    authorization: `Bearer ${getToken()}`
   },
 });
 
