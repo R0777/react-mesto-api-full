@@ -47,7 +47,9 @@ const App = () => {
         }
     
         auth.getContent(jwt).then((res) => {
+            console.log(res)
         if (res.data.email) {
+            console.log(res)
             const userData = { 
             email: res.data.email,
             }
