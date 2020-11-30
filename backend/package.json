@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.22.1"
   },
   "scripts": {
+    "deploy": "scp -r ../backend/* r0777@130.193.42.72:/home/r0777/react-mesto-api-full/backend",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "fix": "eslint ./ --fix"
