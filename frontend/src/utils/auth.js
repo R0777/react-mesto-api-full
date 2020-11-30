@@ -1,6 +1,6 @@
 import { setToken } from './token.js';
 
-export const BASE_URL = 'http://r0777.students.nomoredomains.work/api';
+export const BASE_URL = 'https://r0777.students.nomoredomains.work';
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/sign-up`, {
