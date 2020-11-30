@@ -90,12 +90,12 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 }
-
+const token = getToken();
 const api = new Api({
   url: 'https://r0777.students.nomoredomains.work/api',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
+    'Authorization': `Bearer ${token}`
   },
 });
 

@@ -1,9 +1,9 @@
 import { setToken } from './token.js';
 
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://r0777.students.nomoredomains.work/api';
 
 export const register = (email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}/sign-up`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,10 +16,11 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${BASE_URL}/sign-in`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      
     },
     body: JSON.stringify({email, password})
   })
@@ -39,8 +40,7 @@ export const getContent = (token) => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-
+      'Authorization': `Bearer ${token}`
     }
   })
   .then(res => res.json())

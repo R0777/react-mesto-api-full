@@ -16,26 +16,25 @@ const app = express();
 // app.use('*', cors({
 //   origin: 'https://r0777.students.nomoredomains.work/',
 // }));
-app.use(cors());
-app.options('*', cors());
+// app.use(cors());
+// app.options('*', cors());
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Alow-Origin', '*');
-  res.setHeader('Access-Control-Alow-Methods', '*');
-  res.setHeader('Access-Control-Alow-Headers', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Alow-Origin', '*');
+//   res.setHeader('Access-Control-Alow-Methods', '*');
+//   res.setHeader('Access-Control-Alow-Headers', '*');
+//   next();
+// });
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
 });
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(cors());
 // app.options('*', cors());
 
 // app.use(express.urlencoded({ extended: false }));
