@@ -95,7 +95,7 @@ const api = new Api({
   url: 'https://r0777.students.nomoredomains.work/api',
   headers: {
     'Content-Type': 'application/json',
-    authorization: `Bearer ${getToken()}`
+    'Authorization': `Bearer ${getToken()}`
   },
 });
 
