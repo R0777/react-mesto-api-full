@@ -12,8 +12,12 @@ const { createUser, login } = require('./controllers/users');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-app.use(cors());
-app.options('*', cors());
+
+app.use('*', cors({
+  origin: 'https://r0777.students.nomoredomains.work/',
+}));
+// app.use(cors());
+// app.options('*', cors());
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
