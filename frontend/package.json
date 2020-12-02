@@ -15,7 +15,7 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./build/* r0777@130.193.42.72:/home/r0777/react-mesto-api-full/frontend/build",
+    "deploy": "npm run build && scp -r ./build/* r0777@84.201.162.124:/home/r0777/react-mesto-api-full/frontend/build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

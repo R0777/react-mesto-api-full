@@ -47,7 +47,7 @@ const App = () => {
         }
     
         auth.getContent(jwt).then((res) => {
-            console.log(res)
+
         if (res.data.email) {
             console.log(res)
             const userData = { 
@@ -56,6 +56,23 @@ const App = () => {
             setLoggedIn(true);
             setUserData(userData);
             history.push('/')
+
+            // React.useEffect(() => {
+
+                Promise.all([
+                    api.getProfile(),
+                    api.getInitialCards()
+                ]).then(res => {
+                    const [profile, card] = res
+                    setCurrentUser(profile)
+                    setCurrentCards(card)
+                }).catch((err) => {
+                    console.log(err);
+                })
+            // }, [])
+
+
+
         }
         })
         .catch((err) => {
@@ -90,19 +107,6 @@ const App = () => {
     const [currentCards,
         setCurrentCards] = React.useState([])
 
-    React.useEffect(() => {
-
-        Promise.all([
-            api.getProfile(),
-            api.getInitialCards()
-        ]).then(res => {
-            const [profile, card] = res
-            setCurrentUser(profile)
-            setCurrentCards(card)
-        }).catch((err) => {
-            console.log(err);
-        })
-    }, [])
     
     const handleCardLike = (card) => {
         const isLiked = card
@@ -257,6 +261,7 @@ const App = () => {
                 }
                 else handleTooltip()
             })
+            .then(() => tokenCheck())
             .catch(err => {
                 handleTooltip()
                 console.log(err)
