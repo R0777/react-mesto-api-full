@@ -41,13 +41,12 @@ const App = () => {
     
     const tokenCheck = () => {
         const jwt = getToken();
-    
+
         if (!jwt) {
         return;
         }
-    
         auth.getContent(jwt).then((res) => {
-
+            console.log(res)
         if (res.data.email) {
             console.log(res)
             const userData = { 
@@ -71,10 +70,9 @@ const App = () => {
                 })
             // }, [])
 
-
-
         }
         })
+
         .catch((err) => {
             console.log(err);
         })
@@ -87,9 +85,12 @@ const App = () => {
     }
     
         useEffect(() => {
+            const jwt = getToken();
+            if(!jwt) {
         tokenCheck();
+            }
     }, []);
-        
+
     const [isEditProfilePopupOpen,
         setIsEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen,

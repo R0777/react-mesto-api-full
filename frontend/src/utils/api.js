@@ -92,7 +92,7 @@ class Api {
 }
 const token = getToken();
 const api = new Api({
-  url: 'http://r777.students.nomoredomains.work/api',
+  url: 'https://r777.students.nomoredomains.work/api',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
