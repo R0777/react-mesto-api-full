@@ -74,7 +74,7 @@ const login = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  console.log(req);
+  console.log(req.body);
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).send({ message: 'Невалидные данные' });

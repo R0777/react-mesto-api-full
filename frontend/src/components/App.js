@@ -88,7 +88,7 @@ const App = () => {
 
             const jwt = getToken();
             if(!jwt) {
-        tokenCheck();
+                tokenCheck();
             }
     }, []);
 

@@ -32,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
 });
 app.use(cors());
-//app.options('*', cors());
+// app.options('*', cors());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 
@@ -69,14 +69,14 @@ app.use('/', (req, res) => {
   });
 });
 
+app.use(errorLogger);
+app.use(errors());
+
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
 
   res.status(statusCode).send({ message: statusCode === 500 ? 'На сервере произошла ошибка' : message });
 });
-
-app.use(errorLogger);
-app.use(errors());
 
 app.listen(PORT, () => {
   console.log(`Working on port ${PORT}`);
