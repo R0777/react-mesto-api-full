@@ -85,6 +85,7 @@ const App = () => {
     }
     
         useEffect(() => {
+
             const jwt = getToken();
             if(!jwt) {
         tokenCheck();
