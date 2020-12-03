@@ -203,6 +203,7 @@ const App = () => {
     const handleUpdateAvatar = ({avatar}) => {
         api.profileAvatar(avatar, userId)
             .then(res => {
+                console.log(res)
                 setCurrentUser(res)
                 closeAllPopups();
             })
@@ -230,7 +231,7 @@ const App = () => {
         auth.register(email, password)
             .then((res) => {
 
-                if ((res.status !== 401) && (res.status !== 400 )) {
+                if ((res.status !== 401) && (res.status !== 400 ) && (res.status !== 409 )) {
                     history.push('/sign-in') 
                 } else handleTooltip();
             })

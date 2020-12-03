@@ -34,11 +34,15 @@ const getUser = async (req, res, next) => {
 const updateUserAvatar = async (req, res, next) => {
   try {
     const { avatar, id } = req.body;
-    const user = await User.findByIdAndUpdate(id, { $set: { avatar } });
+    const user = await User.findByIdAndUpdate(id, { avatar }, {
+      new: true,
+      runValidators: true,
+      upsert: false,
+    });
     if (user) {
       return res.status(200).send(user);
     }
-    throw new ErrorNotFound('Пользователь c таким id не найден');
+    throw new ErrorNotFound('Пользователь не найден');
   } catch (error) {
     return next(error);
   }
