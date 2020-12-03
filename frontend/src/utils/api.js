@@ -80,12 +80,13 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  profileAvatar(avalink) {
+  profileAvatar(avalink, userId) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: avalink,
+        id: userId,
       }),
     })
       .then((res) => this._getResponseData(res));

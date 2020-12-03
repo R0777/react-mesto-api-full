@@ -46,7 +46,7 @@ const App = () => {
         return;
         }
         auth.getContent(jwt).then((res) => {
-            console.log(res)
+            
         if (res.email) {
             const userData = { 
             email: res.email,
@@ -201,7 +201,7 @@ const App = () => {
     }
 
     const handleUpdateAvatar = ({avatar}) => {
-        api.profileAvatar(avatar)
+        api.profileAvatar(avatar, userId)
             .then(res => {
                 setCurrentUser(res)
                 closeAllPopups();
@@ -211,7 +211,7 @@ const App = () => {
             })
     }
 
-    const handleAddPlaceSubmit = ({place, link, userId}) => {
+    const handleAddPlaceSubmit = ({place, link}) => {
         api.setCard(place, link, userId)
             .then(res => {
                 setCurrentCards([
@@ -344,8 +344,7 @@ const App = () => {
                         isOpen={isAddPlacePopupOpen}
                         buttonText={'Сохранить'}
                         isClose={closeAllPopups}
-                        onAddPlace={handleAddPlaceSubmit}
-                        userId={userId}/>
+                        onAddPlace={handleAddPlaceSubmit}/>
 
                     <EditAvatarPopup
                         title="Обновить аватар"

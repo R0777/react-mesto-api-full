@@ -31,6 +31,19 @@ const getUser = async (req, res, next) => {
   }
 };
 
+const updateUserAvatar = async (req, res, next) => {
+  try {
+    const { avatar, id } = req.body;
+    const user = await User.findByIdAndUpdate(id, { $set: { avatar } });
+    if (user) {
+      return res.status(200).send(user);
+    }
+    throw new ErrorNotFound('Пользователь c таким id не найден');
+  } catch (error) {
+    return next(error);
+  }
+};
+
 const getMe = async (req, res, next) => {
   try {
     const { id } = req.user;
@@ -94,5 +107,5 @@ const createUser = (req, res, next) => {
 };
 
 module.exports = {
-  getUser, getUsers, createUser, getMe, login,
+  getUser, getUsers, createUser, getMe, login, updateUserAvatar,
 };
