@@ -24,13 +24,14 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  setCard(place, link) {
+  setCard(place, link, userId) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name: place,
         link,
+        id: userId,
       }),
     })
       .then((el) => this._getResponseData(el));
@@ -92,7 +93,7 @@ class Api {
 }
 const token = getToken();
 const api = new Api({
-  url: 'https://r777.students.nomoredomains.work/api',
+  url: 'https://api.r777.students.nomoredomains.work',
   headers: {
     'Content-Type': 'application/json',
     'authorization': `Bearer ${token}`

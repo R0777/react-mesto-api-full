@@ -26,8 +26,8 @@ const deleteCard = async (req, res, next) => {
 
 const createCard = async (req, res, next) => {
   try {
-    const { name, link } = req.body;
-    const ownerId = req.user._id;
+    const { name, link, id } = req.body;
+    const ownerId = id;
     const card = await Card.create({ name, link, owner: ownerId });
     return res.status(200).send(card);
   } catch (error) {

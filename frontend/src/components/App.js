@@ -22,6 +22,7 @@ const App = () => {
     const [userData, setUserData] = useState({ email: '', password: ''});
     const [path, setPath] = useState('/sign-up');
     const [text, setText] = useState('Регистрация');
+    const [userId, setUserId] = useState('')
     const history = useHistory();
 
     const handlePath = (path) => {
@@ -41,17 +42,16 @@ const App = () => {
     
     const tokenCheck = () => {
         const jwt = getToken();
-
         if (!jwt) {
         return;
         }
         auth.getContent(jwt).then((res) => {
             console.log(res)
-        if (res.data.email) {
-            console.log(res)
+        if (res.email) {
             const userData = { 
-            email: res.data.email,
+            email: res.email,
             }
+            setUserId(res._id)
             setLoggedIn(true);
             setUserData(userData);
             history.push('/')
@@ -86,10 +86,8 @@ const App = () => {
     
         useEffect(() => {
 
-            const jwt = getToken();
-            if(!jwt) {
                 tokenCheck();
-            }
+
     }, []);
 
     const [isEditProfilePopupOpen,
@@ -190,8 +188,10 @@ const App = () => {
     }
 
     function handleUpdateUser({name, about}) {
+        console.log(name, about)
         api.setProfile(name, about)
             .then(res => {
+                console.log(res)
                 setCurrentUser(res)
                 closeAllPopups();
             })
@@ -211,8 +211,8 @@ const App = () => {
             })
     }
 
-    const handleAddPlaceSubmit = ({place, link}) => {
-        api.setCard(place, link)
+    const handleAddPlaceSubmit = ({place, link, userId}) => {
+        api.setCard(place, link, userId)
             .then(res => {
                 setCurrentCards([
                     res, ...currentCards
@@ -344,7 +344,8 @@ const App = () => {
                         isOpen={isAddPlacePopupOpen}
                         buttonText={'Сохранить'}
                         isClose={closeAllPopups}
-                        onAddPlace={handleAddPlaceSubmit}/>
+                        onAddPlace={handleAddPlaceSubmit}
+                        userId={userId}/>
 
                     <EditAvatarPopup
                         title="Обновить аватар"

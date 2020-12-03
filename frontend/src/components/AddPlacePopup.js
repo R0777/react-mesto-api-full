@@ -19,8 +19,9 @@ const AddPlacePopup = (props) => {
     }
 
     const handleSubmit = (e) => {
+        const userId = props.userId
         e.preventDefault();
-        props.onAddPlace({place, link});
+        props.onAddPlace({place, link, userId});
     }
 
     return (
