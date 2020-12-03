@@ -13,7 +13,7 @@ const Main = (props) => {
     const items = currentCardContext.map(item => ({
         src: item.link,
         id: item._id,
-        owner: item.owner._id,
+        owner: item.owner,
         alt: item.name,
         likes: item.likes,
         title: item.name,

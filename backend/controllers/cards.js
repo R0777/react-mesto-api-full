@@ -13,10 +13,37 @@ const getCards = async (req, res, next) => {
 const deleteCard = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const card = await Card.findOne({ _id: id });
+    const card = await Card.likes.findOne({ _id: id });
     if (card) {
       await Card.deleteOne(card);
       return res.status(200).send({ message: 'Карточка удалена' });
+    }
+    throw new ErrorNotFound('Пользователь c таким id не найден');
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const addLike = async (req, res, next) => {
+  try {
+    const id = req.params;
+    const like = await Card.likes.save(id);
+    if (like) {
+      return res.status(200).send({ message: 'Лайк добвлен' });
+    }
+    throw new ErrorNotFound('Пользователь c таким id не найден');
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const unLike = async (req, res, next) => {
+  try {
+    const id = req.params;
+    const unlike = await Card.likes.findOne(id);
+    if (unlike) {
+      await Card.deleteOne(unlike);
+      return res.status(200).send({ message: 'Лайк удален' });
     }
     throw new ErrorNotFound('Пользователь c таким id не найден');
   } catch (error) {
@@ -34,4 +61,6 @@ const createCard = async (req, res, next) => {
     return next(error);
   }
 };
-module.exports = { getCards, createCard, deleteCard };
+module.exports = {
+  getCards, createCard, deleteCard, addLike, unLike,
+};

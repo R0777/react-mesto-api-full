@@ -2,6 +2,7 @@ import React from 'react';
 
 const Card = (props) => {
 
+
     function handleCardClick() {
         props.onCardClick(props)
     }
