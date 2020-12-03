@@ -34,11 +34,13 @@ const getUser = async (req, res, next) => {
 const updateUserAvatar = async (req, res, next) => {
   try {
     const { avatar, id } = req.body;
-    const user = await User.findByIdAndUpdate(id, { avatar }, {
-      new: true,
-      runValidators: true,
-      upsert: false,
-    });
+    const user = await User.findByIdAndUpdate(id, { avatar });
+    //   {
+    //   new: true,
+    //   runValidators: true,
+    //   upsert: false,
+    // }
+
     if (user) {
       return res.status(200).send(user);
     }
