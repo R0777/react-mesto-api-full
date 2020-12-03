@@ -188,8 +188,7 @@ const App = () => {
     }
 
     function handleUpdateUser({name, about}) {
-        console.log(name, about)
-        api.setProfile(name, about)
+        api.setProfile(name, about, userId)
             .then(res => {
                 console.log(res)
                 setCurrentUser(res)
@@ -203,7 +202,6 @@ const App = () => {
     const handleUpdateAvatar = ({avatar}) => {
         api.profileAvatar(avatar, userId)
             .then(res => {
-                console.log(res)
                 setCurrentUser(res)
                 closeAllPopups();
             })

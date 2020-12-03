@@ -68,13 +68,14 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  setProfile(name, about) {
+  setProfile(name, about, userId) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
+        id: userId,
       }),
     })
       .then((res) => this._getResponseData(res));
