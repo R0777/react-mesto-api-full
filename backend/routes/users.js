@@ -5,7 +5,7 @@ const {
 
 router.get('/users', getUsers);
 router.get('/users/me', getMe);
-router.get('/users/me/avatar', updateUserAvatar);
+router.patch('/users/me/avatar', updateUserAvatar);
 router.get('/users/:id', getUser);
 
 module.exports = router;
