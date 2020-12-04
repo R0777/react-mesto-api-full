@@ -26,12 +26,12 @@ const deleteCard = async (req, res, next) => {
 
 const addLike = async (req, res, next) => {
   try {
-    const id = req.params;
-    const like = await Card.likes.save(id);
-    if (like) {
+    const likeCard = await Card.findByIdAndUpdate(req.params, { $addToSet: { likes: req.userId } },
+      { new: true });
+    if (likeCard) {
       return res.status(200).send({ message: 'Лайк добвлен' });
     }
-    throw new ErrorNotFound('Пользователь c таким id не найден');
+    throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {
     return next(error);
   }
@@ -39,13 +39,12 @@ const addLike = async (req, res, next) => {
 
 const unLike = async (req, res, next) => {
   try {
-    const id = req.params;
-    const unlike = await Card.likes.findOne(id);
-    if (unlike) {
-      await Card.deleteOne(unlike);
+    const unlikeCard = await Card.findByIdAndUpdate(req.params, { $pull: { likes: req.userId } },
+      { new: true });
+    if (unlikeCard) {
       return res.status(200).send({ message: 'Лайк удален' });
     }
-    throw new ErrorNotFound('Пользователь c таким id не найден');
+    throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {
     return next(error);
   }
