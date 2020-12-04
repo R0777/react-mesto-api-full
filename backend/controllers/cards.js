@@ -47,7 +47,7 @@ const unLike = async (req, res, next) => {
       { $pull: { likes: req.user._id } },
       { new: true });
     if (unlikeCard) {
-      return res.status(200).send({ message: 'Карточка удалена' });
+      return res.status(200).send({ message: 'Лайк удален' });
     }
     throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {
