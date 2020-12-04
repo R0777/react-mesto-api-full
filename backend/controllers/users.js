@@ -98,7 +98,7 @@ const login = (req, res, next) => {
           if (matched) {
             // localStorage.setItem(CLINT_ID, admin._id);
             const token = jwt.sign({
-              id: admin._id,
+              _id: admin._id,
               email: admin.email,
             }, JWT_SECRET);
             return res.status(200).send({ token });
