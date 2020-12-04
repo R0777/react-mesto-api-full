@@ -307,6 +307,7 @@ const App = () => {
                         loginText="Выйти" 
                         userData={userData} 
                         link=""
+                        currentCards={currentCards}
                         handleTooltip={handleTooltip}
                         isTooltipOpen={isTooltipOpen}
                         loggedIn={loggedIn}
