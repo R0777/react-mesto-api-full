@@ -96,7 +96,6 @@ const login = (req, res, next) => {
       return bcrypt.compare(password, admin.password)
         .then((matched) => {
           if (matched) {
-            // localStorage.setItem(CLINT_ID, admin._id);
             const token = jwt.sign({
               _id: admin._id,
               email: admin.email,
