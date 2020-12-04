@@ -34,7 +34,7 @@ const Card = (props) => {
                             type="button"
                             onClick={handleLikeClick}
                             className={`card__like ${ (props.cardLiked !== undefined) && 'card__like card__like_active'}`}></button>
-                        <p className="card__like-number">{props.likes.length}</p>
+                        <p className="card__like-number">{props.like}</p>
                     </div>
                 </figcaption>
             </figure>
