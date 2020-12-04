@@ -114,7 +114,7 @@ const App = () => {
             .some(i => i._id === currentUser._id);
         if (!isLiked) {
             api
-                .addLike(card.id)
+                .addLike(card.id, userId)
                 .then((newCard) => {
 
                     const newCards = currentCards.map((c) => c._id === card.id
@@ -127,7 +127,7 @@ const App = () => {
                 });
         } else {
             api
-                .unLike(card.id)
+                .unLike(card.id, userId)
                 .then((newCard) => {
 
                     const newCards = currentCards.map((c) => c._id === card.id

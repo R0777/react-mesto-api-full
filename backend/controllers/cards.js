@@ -26,8 +26,12 @@ const deleteCard = async (req, res, next) => {
 
 const addLike = async (req, res, next) => {
   try {
-    const likeCard = await Card.findByIdAndUpdate(req.params, { $addToSet: { likes: req.userId } },
+    console.log(req.userId);
+    console.log(req.params);
+    const { userId } = req.userId;
+    const likeCard = await Card.findByIdAndUpdate(req.params, { $addToSet: { likes: userId } },
       { new: true });
+
     if (likeCard) {
       return res.status(200).send({ message: 'Лайк добвлен' });
     }
@@ -39,7 +43,8 @@ const addLike = async (req, res, next) => {
 
 const unLike = async (req, res, next) => {
   try {
-    const unlikeCard = await Card.findByIdAndUpdate(req.params, { $pull: { likes: req.userId } },
+    const { userId } = req.userId;
+    const unlikeCard = await Card.findByIdAndUpdate(req.params, { $pull: { likes: userId } },
       { new: true });
     if (unlikeCard) {
       return res.status(200).send({ message: 'Лайк удален' });
