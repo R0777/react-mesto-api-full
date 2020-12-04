@@ -31,7 +31,7 @@ const addLike = async (req, res, next) => {
       { new: true });
 
     if (likeCard) {
-      return res.status(200).send({ likeCard });
+      return res.status(200).send(likeCard);
     }
     throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {
@@ -45,7 +45,7 @@ const unLike = async (req, res, next) => {
     const unlikeCard = await Card.findByIdAndUpdate(cardId, { $pull: { likes: userId } },
       { new: true });
     if (unlikeCard) {
-      return res.status(200).send({ message: 'Лайк удален' });
+      return res.status(200).send(unlikeCard);
     }
     throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {
