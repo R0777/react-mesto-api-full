@@ -57,14 +57,10 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  unLike(id, userId) {
-    return fetch(`${this._url}/cards/likes`, {
+  unLike(id) {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers,
-      body: JSON.stringify({
-        userId,
-        cardId: id,
-      }),
     })
       .then((res) => this._getResponseData(res));
   }

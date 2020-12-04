@@ -123,7 +123,7 @@ const App = () => {
                     console.log(err);
                 });
         } else {
-            api.unLike(card.id, userId)
+            api.unLike(card.id)
                 .then((newCard) => {
                     const newCards = currentCards.map(c => c._id === card.id
                         ? newCard
