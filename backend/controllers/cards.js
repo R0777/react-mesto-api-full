@@ -41,6 +41,7 @@ const addLike = async (req, res, next) => {
 
 const unLike = async (req, res, next) => {
   try {
+    console.log(req.params);
     const unlikeCard = await Card.findByIdAndUpdate(req.params.cardId,
       { $pull: { likes: req.user._id } },
       { new: true });
