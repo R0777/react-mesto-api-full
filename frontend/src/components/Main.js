@@ -13,7 +13,7 @@ const Main = (props) => {
     const items = currentCardContext.map(item => ({
         
         src: item.link,
-        id: item._id,
+        _id: item._id,
         owner: item.owner,
         alt: item.name,
         likes: item.likes,
@@ -33,7 +33,7 @@ const Main = (props) => {
                 userAvatar={currentUserContext.avatar}/>
 
             <section className="places">
-                {items.map(card => <Card key={card.id} myId={currentUserContext._id} {...card} {...props}/>)}
+                {items.map(card => <Card key={card._id} myId={currentUserContext._id} {...card} {...props}/>)}
             </section>
 
             <ImagePopup card={props.card} onClose={props.onClose}/>
