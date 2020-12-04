@@ -13,7 +13,7 @@ const getCards = async (req, res, next) => {
 const deleteCard = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const card = await Card.likes.findOne({ _id: id });
+    const card = await Card.findOne({ _id: id });
     if (card) {
       await Card.deleteOne(card);
       return res.status(200).send({ message: 'Карточка удалена' });
