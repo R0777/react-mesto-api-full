@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
     minlength: 7,
-    maxlength: 30,
     validate: {
       validator(v) {
         return validator.isEmail(v);
