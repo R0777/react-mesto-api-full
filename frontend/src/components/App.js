@@ -33,7 +33,6 @@ const App = () => {
         setText(text);
     }
 
-
     const handleLogin = (userData) => {
         setUserData(userData);
         setLoggedIn(true);
@@ -123,8 +122,10 @@ const App = () => {
                     console.log(err);
                 });
         } else {
+            console.log(card._id)
             api.unLike(card._id)
                 .then((newCard) => {
+                    
                     const newCards = currentCards.map(c => c._id === card._id
                         ? newCard
                         : c);

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
+const bodyParser = require('body-parser');
 const { errors, celebrate, Joi } = require('celebrate');
 const mongoose = require('mongoose');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -19,6 +20,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
