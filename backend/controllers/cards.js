@@ -42,7 +42,7 @@ const addLike = async (req, res, next) => {
 const unLike = async (req, res, next) => {
   try {
     const { userId, cardId } = req.body;
-    const unlikeCard = await Card.findByIdAndUpdate(cardId, { $pull: { likes: userId } },
+    const unlikeCard = await Card.findByIdAndUpdate(cardId, { $pull: { likes: { userId } } },
       { new: true });
     if (unlikeCard) {
       return res.status(200).send(unlikeCard);
