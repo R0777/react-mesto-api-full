@@ -115,7 +115,7 @@ const App = () => {
                 .addLike(card.id, userId)
                 .then((newCard) => {
 
-                    const newCards = currentCards.map((c) => c === card.id
+                    const newCards = currentCards.map((c) => c === card._id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);
@@ -128,7 +128,7 @@ const App = () => {
                 .unLike(card.id, userId)
                 .then((newCard) => {
 
-                    const newCards = currentCards.map((c) => c === card.id
+                    const newCards = currentCards.map((c) => c === card._id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);
