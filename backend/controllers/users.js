@@ -97,7 +97,7 @@ const login = (req, res, next) => {
         .then((matched) => {
           if (matched) {
             const token = jwt.sign({
-              _id: admin._id,
+              id: admin._id,
               email: admin.email,
             }, JWT_SECRET);
             return res.status(200).send({ token });
