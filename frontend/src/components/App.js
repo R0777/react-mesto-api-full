@@ -109,15 +109,13 @@ const App = () => {
 
     
     const handleCardLike = (card) => {
-        const isLiked = card
-            .likes
-            .some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i === currentUser._id);
         if (!isLiked) {
             api
                 .addLike(card.id, userId)
                 .then((newCard) => {
 
-                    const newCards = currentCards.map((c) => c._id === card.id
+                    const newCards = currentCards.map((c) => c === card.id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);
@@ -130,7 +128,7 @@ const App = () => {
                 .unLike(card.id, userId)
                 .then((newCard) => {
 
-                    const newCards = currentCards.map((c) => c._id === card.id
+                    const newCards = currentCards.map((c) => c === card.id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);

@@ -46,22 +46,24 @@ class Api {
   }
 
   addLike(id, userId) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes`, {
       method: 'PUT',
       headers: this._headers,
       body: JSON.stringify({
-        userId
+        userId,
+        cardId: id,
       }),
     })
       .then((res) => this._getResponseData(res));
   }
 
   unLike(id, userId) {
-    return fetch(`${this._url}/cards/likes/${id}`, {
+    return fetch(`${this._url}/cards/likes`, {
       method: 'DELETE',
       headers: this._headers,
       body: JSON.stringify({
-        userId
+        userId,
+        cardId: id,
       }),
     })
       .then((res) => this._getResponseData(res));

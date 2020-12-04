@@ -31,7 +31,7 @@ const addLike = async (req, res, next) => {
       { new: true });
 
     if (likeCard) {
-      return res.status(200).send({ message: 'Лайк добвлен' });
+      return res.status(200).send({ message: 'Лайк добавлен' });
     }
     throw new ErrorNotFound('Такой карточки нет');
   } catch (error) {

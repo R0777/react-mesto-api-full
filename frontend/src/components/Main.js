@@ -17,10 +17,7 @@ const Main = (props) => {
         alt: item.name,
         likes: item.likes,
         title: item.name,
-        like: item.likes.length,
-        cardLiked: item
-            .likes
-            .find((elem) => elem._id === currentUserContext._id)
+        cardLiked: item.likes.find((elem) => elem === currentUserContext._id)
     }))
 
     return (
