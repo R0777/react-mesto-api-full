@@ -140,9 +140,9 @@ const App = () => {
     const handleDeleteCard = (card) => {
 
         api
-            .deleteCard(card.id)
+            .deleteCard(card._id)
             .then(res => {
-                const deletedCard = currentCards.filter(el => el._id !== card.id)
+                const deletedCard = currentCards.filter(el => el._id !== card._id)
                 setCurrentCards(deletedCard);
             })
             .catch((err) => {
