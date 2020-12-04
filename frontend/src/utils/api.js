@@ -45,14 +45,10 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  addLike(id, userId) {
-    return fetch(`${this._url}/cards/likes`, {
+  addLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers,
-      body: JSON.stringify({
-        userId,
-        cardId: id,
-      }),
     })
       .then((res) => this._getResponseData(res));
   }
