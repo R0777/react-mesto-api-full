@@ -107,6 +107,7 @@ const App = () => {
     const [currentCards,
         setCurrentCards] = React.useState([])
 
+
     
     const handleCardLike = (card) => {
         const isLiked = card.likes.some(i => i === currentUser._id);
@@ -114,8 +115,7 @@ const App = () => {
             api
                 .addLike(card.id, userId)
                 .then((newCard) => {
-
-                    const newCards = currentCards.map((c) => c === card._id
+                    const newCards = currentCards.map(c => c === card.id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);
@@ -127,8 +127,7 @@ const App = () => {
             api
                 .unLike(card.id, userId)
                 .then((newCard) => {
-
-                    const newCards = currentCards.map((c) => c === card._id
+                    const newCards = currentCards.map(c => c === card.id
                         ? newCard
                         : c);
                     setCurrentCards(newCards);
