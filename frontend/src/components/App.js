@@ -55,8 +55,6 @@ const App = () => {
             setUserData(userData);
             history.push('/')
 
-            // React.useEffect(() => {
-
                 Promise.all([
                     api.getProfile(),
                     api.getInitialCards()
@@ -67,7 +65,6 @@ const App = () => {
                 }).catch((err) => {
                     console.log(err);
                 })
-            // }, [])
 
         }
         })
@@ -109,7 +106,6 @@ const App = () => {
 
     
     const handleCardLike = (card) => {
-        console.log(currentUser._id);
         const isLiked = card.likes.some(i => i === currentUser._id);
         if (!isLiked) {
             api.addLike(card._id, userId)
@@ -208,7 +204,7 @@ const App = () => {
     }
 
     const handleAddPlaceSubmit = ({place, link}) => {
-        api.setCard(place, link, userId)
+        api.setCard(place, link )
             .then(res => {
                 setCurrentCards([
                     res, ...currentCards

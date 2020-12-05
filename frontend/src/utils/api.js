@@ -24,14 +24,13 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  setCard(place, link, userId) {
+  setCard(place, link ) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name: place,
         link,
-        id: userId,
       }),
     })
       .then((el) => this._getResponseData(el));

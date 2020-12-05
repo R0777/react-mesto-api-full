@@ -111,7 +111,7 @@ const login = (req, res, next) => {
 const createUser = (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).send({ message: 'Невалидные данные' });
+    throw new BadRequestError('Невалидные данные');
   }
   return User.findOne({ email }).select('+password')
     .then((admin) => {
