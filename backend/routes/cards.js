@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
+const { errors, celebrate, Joi } = require('celebrate');
 const urlRegex = require('url-regex');
 
 const {
