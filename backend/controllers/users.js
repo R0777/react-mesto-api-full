@@ -33,8 +33,8 @@ const getUser = async (req, res, next) => {
 
 const updateUserAvatar = async (req, res, next) => {
   try {
-    const { avatar, id } = req.body;
-    const user = await User.findByIdAndUpdate(id, { avatar },
+    const { avatar } = req.body;
+    const user = await User.findByIdAndUpdate(req.user.id, { avatar },
       {
         new: true,
         runValidators: true,
@@ -51,8 +51,8 @@ const updateUserAvatar = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    const { name, about, id } = req.body;
-    const user = await User.findByIdAndUpdate(id, { name, about },
+    const { name, about } = req.body;
+    const user = await User.findByIdAndUpdate(req.user.id, { name, about },
       {
         new: true,
         runValidators: true,
