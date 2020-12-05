@@ -24,7 +24,7 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  setCard(place, link ) {
+  setCard(place, link) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
@@ -44,16 +44,16 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  addLike(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+  addLike(id) {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
       headers: this._headers,
     })
       .then((res) => this._getResponseData(res));
   }
 
-  unLike(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+  unLike(id) {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -67,26 +67,24 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  setProfile(name, about, userId) {
+  setProfile(name, about) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
-        id: userId,
       }),
     })
       .then((res) => this._getResponseData(res));
   }
 
-  profileAvatar(avalink, userId) {
+  profileAvatar(avalink) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: avalink,
-        id: userId,
       }),
     })
       .then((res) => this._getResponseData(res));

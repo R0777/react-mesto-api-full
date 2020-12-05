@@ -22,7 +22,6 @@ const App = () => {
     const [userData, setUserData] = useState({ email: '', password: ''});
     const [path, setPath] = useState('/sign-up');
     const [text, setText] = useState('Регистрация');
-    const [userId, setUserId] = useState('')
     const history = useHistory();
 
     const handlePath = (path) => {
@@ -50,7 +49,6 @@ const App = () => {
             const userData = { 
             email: res.email,
             }
-            setUserId(res._id)
             setLoggedIn(true);
             setUserData(userData);
             history.push('/')
@@ -108,7 +106,7 @@ const App = () => {
     const handleCardLike = (card) => {
         const isLiked = card.likes.some(i => i === currentUser._id);
         if (!isLiked) {
-            api.addLike(card._id, userId)
+            api.addLike(card._id)
                 .then((newCard) => {
                     const newCards = currentCards.map(c => c._id === card._id
                         ? newCard
@@ -119,7 +117,6 @@ const App = () => {
                     console.log(err);
                 });
         } else {
-            console.log(card._id)
             api.unLike(card._id)
                 .then((newCard) => {
                     
@@ -181,9 +178,8 @@ const App = () => {
     }
 
     function handleUpdateUser({name, about}) {
-        api.setProfile(name, about, userId)
+        api.setProfile(name, about)
             .then(res => {
-                console.log(res)
                 setCurrentUser(res)
                 closeAllPopups();
             })
@@ -193,7 +189,7 @@ const App = () => {
     }
 
     const handleUpdateAvatar = ({avatar}) => {
-        api.profileAvatar(avatar, userId)
+        api.profileAvatar(avatar)
             .then(res => {
                 setCurrentUser(res)
                 closeAllPopups();

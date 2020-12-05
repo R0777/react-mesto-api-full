@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { errors, celebrate, Joi } = require('celebrate');
+const { celebrate, Joi } = require('celebrate');
 const urlRegex = require('url-regex');
 
 const {
@@ -10,29 +10,26 @@ router.get('/cards', getCards);
 
 router.post('/cards', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(3),
+    name: Joi.string().required(),
+    link: Joi.string().required().regex(urlRegex()),
   }),
 }), createCard);
 
 router.delete('/cards/:id', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(3),
+    id: Joi.string().required().min(20).max(30),
   }),
 }), deleteCard);
 
 router.put('/cards/:id/likes', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(3),
+    id: Joi.string().required().min(20).max(30),
   }),
 }), addLike);
 
 router.delete('/cards/:id/likes', celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(3),
+    id: Joi.string().required().min(20).max(30),
   }),
 }), unLike);
 
