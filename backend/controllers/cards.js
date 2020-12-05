@@ -1,5 +1,6 @@
 const Card = require('../models/card');
 const ErrorNotFound = require('../errors/errorNotFound');
+const ForbiddenError = require('../errors/forbiddenError');
 
 const getCards = async (req, res, next) => {
   try {
@@ -18,7 +19,7 @@ const deleteCard = async (req, res, next) => {
       await Card.deleteOne(card);
       return res.status(200).send({ message: 'Карточка удалена' });
     }
-    throw new ErrorNotFound('Пользователь c таким id не найден');
+    throw new ForbiddenError('Доступ запрещен');
   } catch (error) {
     return next(error);
   }
