@@ -11,7 +11,7 @@ router.get('/cards', getCards);
 router.post('/cards', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required(),
-    link: Joi.string().required().regex(urlRegex()),
+    link: Joi.string().required().regex(urlRegex),
   }),
 }), createCard);
 
