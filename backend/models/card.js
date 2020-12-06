@@ -20,7 +20,7 @@ const cardSchema = new mongoose.Schema({
     },
   },
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'user',
     required: true,
   },
