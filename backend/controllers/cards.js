@@ -15,9 +15,7 @@ const deleteCard = async (req, res, next) => {
   try {
     const { id } = req.params;
     const card = await Card.findOne({ _id: id });
-    // const { owner } = await card;
-    console.log(card.owner);
-    console.log(req.user.id);
+
     if (card.owner === req.user.id) {
       await Card.deleteOne(card);
       return res.status(200).send({ message: 'Карточка удалена' });

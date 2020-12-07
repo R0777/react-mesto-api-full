@@ -16,8 +16,13 @@ module.exports = (req, res, next) => {
       throw new NotAuthorizeError('Необходима авторизация');
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded;
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      req.user = decoded;
+    } catch (e) {
+      throw new NotAuthorizeError('Необходима авторизация');
+    }
+
     return next();
   } catch (error) {
     return next(error);
